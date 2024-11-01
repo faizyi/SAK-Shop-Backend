@@ -6,10 +6,7 @@ const Routes = require("./src/routes/routes");
 const corsOption = require("./src/configs/cors.config");
 const bodyParser = require("body-parser");
 const app = express();
-
-
 const PORT = config.appPort;
-connectDB();
 app.use(bodyParser.json({ limit: "50mb" })); // Increase limit for large files
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 app.use(express.json())
@@ -20,9 +17,12 @@ app.get("/", (req, res) => {
     res.send("hello")
 })
 
-app.listen(PORT, () => {
-    console.log(`Server started at port no. ${PORT}`)
-})
+(async () => {
+    await connectDB(); // Wait until database connection is established
+    app.listen(PORT, () => {
+        console.log(`Server started at port no. ${PORT}`);
+    });
+})();
 
 
  
