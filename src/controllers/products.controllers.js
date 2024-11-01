@@ -1,7 +1,12 @@
-const ProductModel = require("../models/product.model");
+const { getAllProducts } = require("../services/productServices");
 
 const getProducts = async (req, res) => {
-  res.send("getProducts");
+  try {
+    const products = await getAllProducts();
+    return res.status(200).json({ success: true, message: 'Products fetched successfully', data: products });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: 'Something went wrong', data: null });
+  }
     // try {
     //     const products = await ProductModel.find({});
     //     if(products.length > 0) {
