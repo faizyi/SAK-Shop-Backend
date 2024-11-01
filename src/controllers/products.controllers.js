@@ -1,16 +1,17 @@
 const ProductModel = require("../models/product.model");
 
 const getProducts = async (req, res) => {
-    try {
-        const products = await ProductModel.find({});
-        if(products.length > 0) {
-            return res.status(200).json({ success: true, message: 'Products fetched successfully', data: products });
-        } else {
-            return res.status(404).json({ success: false, message: 'No products found', data: null });
-        }
-    } catch (error) {  
-        return res.status(500).json({ success: false, message: 'Something went wrong', data: null });
-    }
+  res.send("getProducts");
+    // try {
+    //     const products = await ProductModel.find({});
+    //     if(products.length > 0) {
+    //         return res.status(200).json({ success: true, message: 'Products fetched successfully', data: products });
+    //     } else {
+    //         return res.status(404).json({ success: false, message: 'No products found', data: null });
+    //     }
+    // } catch (error) {  
+    //     return res.status(500).json({ success: false, message: 'Something went wrong', data: null });
+    // }
 }
 
 const getProductDetailsById = async (req, res) => {
