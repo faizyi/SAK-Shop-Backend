@@ -1,4 +1,4 @@
-const whiteList = ["http://localhost:3000", "http://localhost:3001", "https://sak-shop-ecommerce.vercel.app/" ];
+const whiteList = ["http://localhost:3001", "https://sak-shop-ecommerce.vercel.app/" ];
 const corsOption = {
     origin: function (origin, callback) {
         if (whiteList.indexOf(origin) !== -1 || !origin) {
