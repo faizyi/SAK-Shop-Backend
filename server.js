@@ -17,12 +17,13 @@ app.get("/", (req, res) => {
     res.send("hello")
 })
 
-(async () => {
-    await connectDB(); // Wait until database connection is established
+connectDB().then(() => {
     app.listen(PORT, () => {
         console.log(`Server started at port no. ${PORT}`);
     });
-})();
+}).catch(error => {
+    console.error("Failed to connect to the database:", error.message);
+});
 
 
  
